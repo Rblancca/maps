@@ -1,4 +1,4 @@
-package com.maps.contest.presentation.mainactivity
+package com.maps.contest.view.mainactivity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name="com.maps.contest.presentation.mainactivity.MainActivity"
+            android:name="com.maps.contest.view.mainactivity.MainActivity"
             android:screenOrientation="portrait">
             <nav-graph android:value="@navigation/main_graph" />
             <intent-filter>

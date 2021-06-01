@@ -2,8 +2,9 @@ package com.maps.contest
 
 import RetrofitModule
 import android.app.Application
-import com.maps.contest.di.useCaseModule
-import com.maps.contest.di.viewModelModule
+import com.maps.contest.data.di.DatabaseModule
+import com.maps.contest.data.di.DomainModule
+import com.maps.contest.di.ViewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -19,8 +20,9 @@ class AppApplication : Application() {
             modules(
                 listOf(
                     RetrofitModule().getModule(),
-                    viewModelModule,
-                    useCaseModule,
+                    ViewModelModule().getModule(),
+                    DomainModule().getModule(),
+                    DatabaseModule().getModule()
                 )
             )
         }

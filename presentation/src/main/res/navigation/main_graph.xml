@@ -5,6 +5,6 @@
 
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.maps.contest.presentation.map.MapFragment"
+        android:name="com.maps.contest.view.map.MapFragment"
         android:label="MapFragment" />
 </navigation>

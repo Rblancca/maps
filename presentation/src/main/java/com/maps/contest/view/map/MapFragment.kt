@@ -1,4 +1,4 @@
-package com.maps.contest.presentation.map
+package com.maps.contest.view.map
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,11 +10,15 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.snackbar.Snackbar
+import com.maps.contest.myapplication.R
 import com.maps.contest.myapplication.databinding.MapFragmentBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MapFragment : Fragment(), OnMapReadyCallback {
+class MapFragment : Fragment() {
     private var _binding: MapFragmentBinding? = null
-    private lateinit var mMap: GoogleMap
+    private val viewModel by viewModel<MapViewModel>()
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -23,25 +27,36 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View {
         _binding = MapFragmentBinding.inflate(inflater, container, false)
-        binding.googleMap.getMapAsync {  }
+        setObserver()
         return binding.root
     }
+
+    private fun setObserver() {
+        viewModel.routers.observe(viewLifecycleOwner, { list ->
+            binding.root.let { root ->
+                Snackbar.make(
+                    root,
+                    "exito",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+        })
+        viewModel.error.observe(viewLifecycleOwner, {
+            binding.root.let { root ->
+                Snackbar.make(
+                    root,
+                    "error",
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+        })
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(
-            MarkerOptions()
-                .position(sydney)
-                .title("Marker in Sydney")
-        )
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-    }
 }
