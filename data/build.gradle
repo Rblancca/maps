@@ -40,4 +40,16 @@ dependencies {
     testImplementation "junit:junit:$jUnitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxTestRunner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$expresso"
+
+    // Koin
+    implementation "io.insert-koin:koin-core:$koin"
+    implementation "io.insert-koin:koin-android:$koin"
+    implementation "io.insert-koin:koin-androidx-viewmodel:$koin"
+    implementation "io.insert-koin:koin-androidx-ext:$koin"
+
+    def retrofit = "2.7.2"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.4.0"
+
 }
