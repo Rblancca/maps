@@ -17,9 +17,19 @@ class MapViewModel(private val getRouters: GetRouters) : ViewModel() {
     val error: LiveData<ErrorResponse> = _error
 
 
-    init {
+    fun loadMarkets(
+        northEastLatitude: Double,
+        northEastLongitude: Double,
+        southWestLatitude: Double,
+        southWestLongitude: Double
+    ) {
         viewModelScope.launch {
-            getRouters().fold({ error ->
+            getRouters(
+                northEastLatitude,
+                northEastLongitude,
+                southWestLatitude,
+                southWestLongitude
+            ).fold({ error ->
                 _error.postValue(error)
             }, { domainRoutes ->
                 _routers.postValue(domainRoutes)

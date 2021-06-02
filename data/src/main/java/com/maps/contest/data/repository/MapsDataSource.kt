@@ -5,5 +5,10 @@ import com.maps.contest.data.entities.ErrorResponse
 import com.maps.contest.data.entities.Routers
 
 interface MapsDataSource {
-    suspend fun getRouters(): Either<ErrorResponse, List<Routers>>
+    suspend fun getRouters(
+        northEastLatitude: Double,
+        northEastLongitude: Double,
+        southWestLatitude: Double,
+        southWestLongitude: Double
+    ): Either<ErrorResponse, List<Routers>>
 }

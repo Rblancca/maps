@@ -14,6 +14,7 @@ ext {
     navigation = "2.3.5"
 
     maps = "17.0.1"
+    mapsUtils = "1.1.0"
 
     koin = "2.0.1"
 

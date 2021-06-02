@@ -2,6 +2,7 @@ package com.maps.contest.data.response
 
 import com.google.gson.annotations.SerializedName
 import com.maps.contest.data.entities.Routers
+import com.maps.contest.data.entities.RoutersColors
 import com.maps.contest.data.util.Mappable
 
 data class RoutersResponse(
@@ -25,5 +26,15 @@ data class RoutersResponse(
     val companyZoneId: Int
 ) : Mappable<Routers> {
     override fun toDomain(): Routers =
-        Routers(id, name, x, y, scheduledArrival, lon, lat, companyZoneId)
+        Routers(
+            id,
+            name,
+            x,
+            y,
+            scheduledArrival,
+            lon,
+            lat,
+            companyZoneId,
+            RoutersColors.from(companyZoneId)
+        )
 }

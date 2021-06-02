@@ -65,6 +65,8 @@ dependencies {
 
     //map
     implementation "com.google.android.gms:play-services-maps:$maps"
+    implementation "com.google.maps.android:android-maps-utils:$mapsUtils"
+
 
     implementation "io.arrow-kt:arrow-core:$arrow_version"
     implementation "io.arrow-kt:arrow-syntax:$arrow_version"
